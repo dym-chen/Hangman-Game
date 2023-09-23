@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    @import url("https://fonts.googleapis.com/css?family=PT+Sans+Narrow&display=swap");
+
+    body {
+      font-family: "PT Sans Narrow", sans-serif;
+      background : url('Images/wall.jpg');
+      position: relative;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .lds-ring {
+      display: inline-block;
+      position: relative;
+      width: 80px;
+      height: 80px;
+    }
+    .lds-ring div {
+      box-sizing: border-box;
+      display: block;
+      position: absolute;
+      width: 64px;
+      height: 64px;
+      margin: 8px;
+      border: 8px solid white;
+      border-radius: 50%;
+      animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+      border-color: white transparent transparent transparent;
+    }
+    .lds-ring div:nth-child(1) {
+      animation-delay: -0.45s;
+    }
+    .lds-ring div:nth-child(2) {
+      animation-delay: -0.3s;
+    }
+    .lds-ring div:nth-child(3) {
+      animation-delay: -0.15s;
+    }
+    @keyframes lds-ring {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    .start {
+      position: absolute;
+      width: 100%;
+      height: 100vh;
+      background-color: black;
+      display: block;
+      opacity : 1;
+      transition: 1s;
+    }
+    .center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+    .main {
+      position: relative;
+      width: 100%;
+      height: 750px;
+    }
+    .body {
+      padding : 25px 50px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      opacity: 0;
+      transition: 1s;
+      background-color: white;
+      z-index: 3;
+      box-shadow: 0px 0px 20px 5px #544745;
+      font-size: 1.5em;
+      text-transform: uppercase;
+      max-width: 340px;
+    }
+    .input {
+      width : 90%;
+      margin-top: 5px;
+      border-left : hidden;
+      border-top : hidden;
+      border-right : hidden;
+      border-bottom : 3px solid #465C55;
+      font-family: "PT Sans Narrow", sans-serif;
+      font-size: 1em;
+      background-color: white;
+    }
+    .body h1, h2, h3, h4, h5, p{
+      margin : 5px;
+    }
+    .button {
+      background-color: #2E50B4;
+      color: white;
+      font-family: "PT Sans Narrow", sans-serif;
+      border : 1px solid black;
+      font-size: 1em;
+      width : 5em;
+      position: relative;
+    }
+    .button:hover {
+      background-color: #1D398C;
+      color: white;
+      text-decoration: underline;
+      transition: 0.5s;
+    }
+    input[type=text]:focus, input[type=password]:focus {
+      background-color: #ddd;
+      outline: none;
+      transition: 0.2s;
+    }
+    .trans {
+      width: 100%;
+      opacity: 1;
+      transition: 0.5s;
+    }
+    .trans1 {
+      width: 100%;
+      opacity: 0;
+      transition: 0.5s;
+      margin-left : 200px;
+      display : none;
+    }
+    .back {
+      border : none;
+      background-color: white;
+      padding: 2px;
+    }
+    .back:hover {
+      border-radius : 10px;
+      background-color: #ACACAC;
+      transition : 0.5s;
+    }
+    .show {
+      width : 1.2em;
+      height : 1.2em;
+      display: inline-block;
+      background-color: #727272;
+      border : 1px solid black;
+    }
+    .show:active {
+      background-color: #454444;
+    }
+    .img {
+      display : none;
+      transition : 0.1s;
+      margin : 0;
+    }
+    .img1 {
+      position: absolute;
+      top: 33%;
+      left: 65%;
+      margin-right: 0px;
+      opacity : 0;
+      width: 25px;
+      height : 15px;
+      transition: 0.5s;
+    }
+    .load {
+      color: white;
+      font-size: 25px;
+      display : inline-block;
+    }
+    .load p {
+      display: inline-block;
+      color: white;
+      margin: 1px;
+      padding: 0;
+    }
+    .load p:nth-child(1) {
+      animation-name : load;
+      animation-delay : 0;
+      animation-iteration-count : infinite;
+      animation-duration : 1s;
+    }
+    .load p:nth-child(2) {
+      animation-name : load;
+      animation-iteration-count : infinite;
+      animation-duration : 1s;
+      animation-delay : 0.25s;
+    }
+    .load p:nth-child(3) {
+      animation-name : load;
+      animation-iteration-count : infinite;
+      animation-duration : 1s;
+      animation-delay : 0.5s;
+    }
+    @keyframes load {
+      0% {
+        transform: scale(1, 1);
+      }
+      50% {
+        transform: scale(1.3, 1.3);
+      }
+      100% {
+        transform: scale(1, 1);
+      }
+    }
+    #user {
+      transition: 0.5s;
+      opacity: 0;
+    }
+    #pass {
+      transition: 0.5s;
+      opacity: 0;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="start" id="loading">
+      <div class="center">
+        <div class="lds-ring" id="ring"><div></div><div></div><div></div><div></div></div> <br>
+        <div class="load">Loading <p>.</p><p>.</p><p>.</p> </div>
+      </div>
+    </div>
+    <div class="main">
+      <div class="body" id="main">
+        <div id="uno" class="trans">
+            <a href="Index.html"><img src="Images/back.png" alt="back button" width="20px" height="20px" style="display : inline-block" class="back"></a> <p style="display : inline-block; ">BaoGames Co.</p  >
+            <h1><u>Create Account</u></h1>
+            <input type="text" placeholder="New account username" class="input" id="name" style="display : inline-block"> <img src="Images/alert.png" alt="" width="20px" height="20px" id="alert" class="img">
+            <br><br><br><br>
+          <center>
+            <button type="button" name="button" class="button" onclick="next()" onmouseover="step()" id="button">Next <img src="Images/next.png" id="next" class="img1"></button>
+          </center>
+        </div>
+        <div id="dos" class="trans1">
+          <center>
+            <h4>BaoGames Co.</h2>
+          </center>
+            <button type="button" name="button" onclick="reverse()" class="back"><img src="Images/back.png" alt="back button" width="20px" height="20px" style="display : inline-block"></button>
+            <div style="display : inline-block" id="old">Hello</div>
+            <h1><u>Your password</u></h1>
+            <input type="password" placeholder="New account password" class="input" id="name1">
+            <br><br>
+            <p>Retype your password</p>
+            <input type="password" placeholder="Repeat password" class="input" id="name2" style="margin-top : -20px;"> <img src="Images/alert.png" alt="" width="20px" height="20px" id="alert1" style="display : none;">
+            <br><br>
+            <button type="button" name="button" class="show" onclick="reveal()"></button><p style="font-size : 15px; display : inline-block;" id="change">Show password</p>
+            <br><br>
+          <center>
+            <button type="button" name="button" class="button" onclick="next1()">Next</button>
+          </center>
+        </div>
+        <div id="tros" class="trans1">
+          <center>
+            <h4>BaoGames Co.</h2>
+            <h2>Thank you for the sign up</h2> <br>
+            <p id="lod" style="font-size : 0.8em;"></p>
+            <p id="user" style="font-size : 0.8em;"></p>
+            <p id="pass" style="font-size : 0.8em;"></p>
+            <br>
+            <button type="button" name="button" class="button"><a href="game.html" style="text-decoration : none; color : white;">Start Game</a></button>
+          </center>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+
+    function step() {
+      document.getElementById("button").addEventListener("mouseover", mouseOver);
+      document.getElementById("button").addEventListener("mouseout", mouseOut);
+      function mouseOver() {
+        document.getElementById('next').style.marginRight = "10px"
+        document.getElementById('next').style.opacity = "1"
+      }
+      function mouseOut() {
+        document.getElementById('next').style.marginRight = "5px"
+        document.getElementById('next').style.opacity = "0"
+      }
+    }
+
+    var user = "";
+
+    setTimeout(function() {
+      document.getElementById('loading').style.opacity = "0";
+      document.getElementById('main').style.opacity = "1";
+    }, 2000);
+    setTimeout(function() {
+      document.getElementById('ring').style.display = "none";
+      document.getElementById('loading').style.opacity = "0.3";
+    }, 3100);
+
+    function next() {
+      var nam = document.getElementById('name').value;
+      if (nam == "") {
+        document.getElementById('name').style.backgroundColor = "#BC7878"
+        document.getElementById('alert').style.display = "inline-block"
+        setTimeout(function() {
+          document.getElementById('alert').style.marginLeft = "2px"
+        }, 100);
+        setTimeout(function() {
+          document.getElementById('alert').style.marginLeft = "0px"
+        }, 200);
+      }
+      else {
+        document.getElementById('old').innerHTML = nam
+        user += String(document.getElementById('name').value);
+        document.getElementById('uno').style.opacity = "0"
+        document.getElementById('uno').style.width = "20%"
+        document.getElementById('uno').style.display = "none"
+        document.getElementById('dos').style.display = "block"
+        setTimeout(function() {
+          document.getElementById('dos').style.marginLeft = "0"
+          document.getElementById('dos').style.opacity = "1"
+        }, 100);
+      }
+    }
+
+    function reverse() {
+      document.getElementById('dos').style.opacity = "0"
+      setTimeout(function() {
+        document.getElementById('dos').style.marginLeft = "150px"
+        document.getElementById('dos').style.display = "none"
+        document.getElementById('uno').style.display = "block"
+        document.getElementById('uno').style.width = "100%"
+      }, 200);
+      setTimeout(function() {
+        document.getElementById('uno').style.opacity = "1"
+      }, 300);
+      document.getElementById('name1').value = "";
+      document.getElementById('name2').value = "";
+    }
+
+
+      var i = 0;
+    function reveal() {
+      if (i == 0) {
+        i = 1;
+        document.getElementById('name1').type = 'text';
+        document.getElementById('name2').type = 'text';
+        document.getElementById('change').innerHTML = "Hide Password"
+      }
+      else {
+        i = 0
+        document.getElementById('name1').type = 'password';
+        document.getElementById('name2').type = 'password';
+        document.getElementById('change').innerHTML = "Show Password"
+      }
+    }
+
+    function next1() {
+      var pass = document.getElementById('name1').value
+      var pass1 = document.getElementById('name2').value
+      if (pass != pass1 || (pass && pass1) == "") {
+        document.getElementById('name2').value = ""
+        document.getElementById('name2').style.backgroundColor = "#BC7878"
+        document.getElementById('alert1').style.display = "inline-block"
+        setTimeout(function() {
+          document.getElementById('alert1').style.marginLeft = "1px"
+        }, 100);
+        setTimeout(function() {
+          document.getElementById('alert1').style.marginLeft = "0px"
+        }, 200);
+      }
+      else {
+      document.getElementById('dos').style.opacity = "0"
+      document.getElementById('dos').style.width = "20%"
+      document.getElementById('dos').style.display = "none"
+      document.getElementById('tros').style.display = "block"
+      setTimeout(function() {
+        document.getElementById('tros').style.marginLeft = "0"
+        document.getElementById('tros').style.opacity = "1"
+      }, 100);
+      document.getElementById('user').style.opacity = "1";
+        var i = 0;
+        var repeat = setInterval(myTimer, 100);
+        function myTimer() {
+          i++;
+          var input4 = "Loading..."
+          var sub = input4.substring(0,i);
+          document.getElementById('lod').innerHTML = sub
+          if (i == input4.length) {
+            clearInterval(repeat);
+          }
+        }
+      setTimeout(function() {
+        document.getElementById('lod').innerHTML = ""
+        document.getElementById('user').innerHTML = "Your username is <b>" + user + "</b>"
+        document.getElementById('pass').innerHTML = "Your password is <b>" + pass + "</b>"
+        document.getElementById('user').style.opacity = "1";
+        document.getElementById('pass').style.opacity = "1";
+      }, 1500);
+    }
+  }
+    </script>
+  </body>
+</html>

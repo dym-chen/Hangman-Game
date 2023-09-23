@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Shadows Into Light Two' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Patrick Hand SC' rel='stylesheet'>
+    <title></title>
+    <style media="screen">
+    html {
+      scroll-behavior: smooth;
+    }
+    @import url("https://fonts.googleapis.com/css?family=PT+Sans+Narrow&display=swap");
+    body {
+      padding: 0;
+      margin: 0;
+      font-family: 'Patrick Hand SC';
+      overflow-x: hidden;
+    }
+    body h1,h2,h3,h4,p,a {
+      margin: 0;
+      padding: 0;
+    }
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #EBEBEB;
+      opacity: 0.9;
+      z-index: 100;
+    }
+    .navbar a {
+      display: inline-block;
+      font-size: 25px;
+      text-decoration: none;
+      color: black;
+      margin: 0% 20px 0% 0%;
+      letter-spacing: 5px;
+      font-family: 'Patrick Hand SC';
+      transition: 0.2s;
+    }
+    .navbar a:hover {
+      border-bottom: 2px solid black;
+      border-radius: 1px;
+    }
+    .button {
+      font-weight: 800;
+      font-family: 'Patrick Hand SC';
+      margin : 2px 0px 10px 0px;
+      font-size: 25px;
+      letter-spacing: 5px;
+      display: inline-block;
+      border : 0px solid black;
+      background-color: #D35757;
+      padding: 5px;
+      border-radius : 5px;
+      color : white;
+      transition: 0.5s;
+    }
+    .button:hover {
+      background-color: #E98181
+    }
+    .div {
+      content: "";
+      width: 100%;
+      min-height: 10px;
+      position: relative;
+    }
+    .button1 {
+      position: fixed;
+      bottom: 1%;
+      left: 0.5%;
+      background-color: transparent;
+      width: 68px;
+      height: 68px;
+      border-radius: 34px;
+      transition: 0.5s;
+      cursor: pointer;
+      opacity: 0;
+    }
+    .button1:hover {
+      background-color: #D36363;
+    }
+    .info {
+      width: 21%;
+      display: inline-block;
+      margin: 10px 20px 100px 20px;
+      min-height: 100px;
+      font-size: 18px
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0 4px;
+      z-index: 1;
+    }
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .column {
+      float: left;
+      width: 23%;
+      padding: 15px;
+    }
+    .column img {
+      margin-top: 15px;
+      cursor: pointer;
+      transition: 0.1s;
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #DF6767;
+      opacity: 0;
+      width: 100%;
+      height: 117vh;
+      display: none;
+      transition: 1s;
+      z-index: 2;
+    }
+    .images {
+      position: absolute;
+      top: 1%;
+      left: 0.5%;
+      width: 40%;
+      height: 100vh;
+      display: none;
+      z-index: 3;
+    }
+    .images div{
+      position: absolute;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      transition: 0.6s;
+      width: 100%;
+    }
+    .images img {
+      width: 100%;
+      transform: scale(0,0);
+      transition: 0.6s;
+    }
+    .text {
+      position: absolute;
+      top: 1%;
+      left: 50%;
+      width: 50%;
+      height: 100vh;
+      display: none;
+      z-index: 4;
+    }
+    .center {
+      position: absolute;
+      top: 60%;
+      left: 42%;
+      transform: translate(-50%,-50%);
+      transition: 1s;
+      width: 108%;
+      opacity: 0;
+    }
+    .center1 {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+    .align {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .buttone {
+      position: absolute;
+      top: 1%;
+      right: 0.5%;
+      border: 0px;
+      background-color: transparent;
+      transition: 1s;
+      cursor: pointer;
+      opacity: 0;
+    }
+    .buttone img {
+      width: 40px;
+    }
+    .buttone:hover {
+      transform: rotateY(180deg);
+    }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <h1 style="display : inline-block; margin : 0px; margin : 0.1% 0% 0.1% 1%; font-size: 45px;" id="header">BaoGames</h1>
+      <p style="display: inline-block; margin-right: 42%; opacity: 0; transition: 0.5s;" id="text">,created by Ray Bao</p>
+      <a href="Index.html">Home</a>
+      <a href="login.html">Login</a>
+      <a href="signUp.html">Sign Up</a>
+      <button type="button" name="button" class="button" onclick="link()">Play Game</button>
+    </div>
+
+    <a href="game.html" id="link"></a>
+
+    <br><br><br><br>
+    <br><br>
+    <div class="">
+    <center>
+      <h1 style="font-size: 100px; font-weight: 800">Why Bao Games?</h1>
+      <br><br><br>
+      <p style="font-size : 35px; font-family: 'Shadows Into Light Two'; letter-spacing : 2px;">OUR STORY</p>
+      <br><br>
+      <div style="width : 80%; font-size: 20px;">
+        <p>Great stories have humble beginnings, and if there's one word to describe ours, it's humble. <br><br>
+          In 2011, Bao Games was created by our current CEO, Ray Bao, as a partnership to build leadership development tools. The Idea was to apply what he had learned in studying leadership research and theory at the Department of National Defence, to help young professionals develop into strong leaders. Due to time commitments, the partnership was dismantled, and progress halted in 2012. <br><br>
+          But like a phoenix from the ashes, an opportunity arrived in 2016. There was a growing demand for companies that could provide customer and employee experience consulting. Luckily, Ray and his cousin Matthew specialized in just that. Launching a sole proprietorship using a variation of Bao Games's previous branding, Ray's new iteration of the company took off. Through sheer grit and obsession, they worked evenings and weekends while balancing full-time work. After enough sweat, coffee, and late nights, Ray reemerged as one of the leading Ottawa-based consultants in our field. <br><br>
+          The success felt good, but satisfaction is the enemy of progress. Companies would pose questions about digital advertising, social media, and SEO capabilities. They didn't just want to retain customers; they wanted to create new ones. Seeing the similarities between the two goals, Ray morphed into offering total business solutions. Hiring Daniel, our resident digital marketer, and Anik, an ever-so-talented graphic designer, gave us the ability to run Bao Games full time and expand our capabilities. <br><br>
+          Across all of our iterations, successes, and failures, one thing has remained: obsession - an obsession with our clients, results, and the work we put out. We combine a scientific, analytical approach with a passionate work ethic to routinely surpass industry averages. What we do today might evolve tomorrow, as we're always exploring new avenues and trends (like the artificial intelligence we are currently building), but the future looks bright. In 2020, as Bao Games Ltd. is re-branded and registered as a corporation in Canada, we promise to continue being obsessive about our clients and provide forward-thinking solutions to contemporary problems.</p>
+          <br><br><br>
+      </div>
+    </center>
+    </div>
+    <div class="div" style="background-color : #D1D1D1" id="toolbox">
+      <center>
+        <br><br><br>
+        <p style="font-size : 40px; margin: 0px;">our</p>
+        <h1 style="font-size : 60px; margin : 0px;">Toolbox</h1>
+        <br>
+        <div class="info">
+          <img src="Images/news.png" alt="" style="width: 30%;">
+          <h1>Digital Marketing</h1>
+          <p>Employ experiential strategies that maximize the impact of both your organic and paid content. Your business will greatly benefit.</p>
+        </div>
+        <div class="info">
+          <img src="Images/paint.png" alt="" style="width: 50%;">
+          <h1>Content Creation</h1>
+          <p>Benefit from Duco's graphic design and copywriting capabilities to create fresh and engaging content for you business</p>
+        </div>
+        <div class="info">
+          <img src="Images/search.png" alt="" style="width: 30%;">
+          <h1>E-Commerce Strategies</h1>
+          <p>Adopt SEO, content management, and web design best practices to fortify your online presence. Social prescence is key is modern society.</p>
+        </div>
+        <br>
+        <div class="info">
+          <img src="Images/hand.png" alt="" style="width: 40%;">
+          <h1>Business Development</h1>
+          <p>Create your own business plan/proposal! Capitalize on our extensive experience in market research.</p>
+        </div>
+        <div class="info">
+          <img src="Images/copy.png" alt="" style="width: 30%;">
+          <h1>Analytical Reporting</h1>
+          <p>Gain confidence in your advertising dollars through detailed, metric based reporting and AI technology.</p>
+        </div>
+        <div class="info">
+          <img src="Images/thumbs.png" alt="" style="width: 30%;">
+          <h1>Experience Management</h1>
+          <p>Grow your reputation online and in the office by studying the experience your business provides. Can be used on any social media platforms.</p>
+        </div>
+        <br><br>
+      </center>
+    </div>
+    <div class="div" style="background-color: white;">
+    <div class="row">
+      <div class="column" id="column0" >
+        <img src="Images/Ray.jpg" style="width: 100%; border-bottom: 0.5px solid black; border-right: 0.5px solid black;" onclick='board("img0", 0)' id="img0">
+        <img src="Images/matthew.jpg" style="width: 100%" onclick='board("img1", 1)' id="img1">
+      </div>
+      <div class="column" id="column2" style="left: 10%;">
+        <img src="Images/emma.PNG" style="width: 100%" onclick='board("img2", 2)' id="img2">
+        <img src="Images/debbie.PNG" style="width: 100%" onclick='board("img3", 3)' id="img3">
+      </div>
+      <div class="column" id="column4">
+        <img src="Images/daniel.PNG" style="width: 100%" onclick='board("img4", 4)' id="img4">
+        <img src="Images/Sharon.png" style="width: 100%" onclick='board("img5", 5)' id="img5">
+      </div>
+      <div class="column" id="column6">
+        <img src="Images/jarry.PNG" style="width: 100%" onclick='board("img6", 6)' id="img6">
+        <img src="Images/linda.jpg" style="width: 100%" onclick='board("img7", 7)' id="img7">
+      </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="images" id="images">
+      <div class="center1">
+        <img src="Images/daniel.PNG" alt="" style="width: 100%; opacity: 0.4;" id="input">
+      </div>
+    </div>
+
+    <div class="text" id="text2">
+      <div class="center" id="text1">
+        <h1 style="font-size: 50px;" id="text3">Lead developper</h1>
+        <p id="text4" style="font-size: 20px;"></p>
+        <br>
+        <img src="Images/book.png" alt="" style="width: 20px;" class="align">
+        <p class="align">Education: <b id="text5"></b></p>
+        <img src="Images/job.png" alt="" style="width: 20px; margin-left : 20px;" class="align">
+        <p class="align">Past Job: <b id="text6"></b></p>
+        <img src="Images/hobbies.png" alt="" style="width: 20px; margin-left : 20px;" class="align">
+        <p class="align">Hobbies: <b id="text7"></b></p>
+      </div>
+      <button type="button" name="button" class="buttone" id="buttone" onclick="back()"><img src="Images/x.png" alt=""></button>
+    </div>
+
+  </div>
+
+
+
+    <a href="#"><button type="button" name="button" class="button1" id="button1"><img src="Images/up.png" alt="" style="width: 60px; margin: 0px 0px -5px -3px;"></button></a>
+
+    <script type="text/javascript">
+    document.getElementById('header').addEventListener("mouseover", function() {
+      document.getElementById('text').style.opacity = "1"
+    })
+    document.getElementById('header').addEventListener("mouseout", function() {
+      document.getElementById('text').style.opacity = "0"
+    })
+
+    window.onscroll = function() {scroll();}
+    function scroll() {
+      if (document.getElementById('toolbox').offsetTop-500  <= window.pageYOffset) {
+        document.getElementById('button1').style.opacity = "1"
+      }
+      if (document.getElementById('toolbox').offsetTop-500  >= window.pageYOffset) {
+        document.getElementById('button1').style.opacity = "0"
+      }
+    }
+
+    function board(id, number) {
+      document.getElementById('images').style.display = "block"
+      document.getElementById('text2').style.display = "block"
+      document.getElementById('overlay').style.display = "block"
+      var image = ["Images/Ray.jpg","Images/matthew.jpg","Images/emma.png","Images/debbie.png","Images/daniel.png","Images/sharon.png","Images/jarry.png","Images/linda.jpg"]
+      document.getElementById('input').src = image[number]
+      for (var i = 0; i < 8; i++) {
+        document.getElementById('img' + i).style.transition = "1s";
+        document.getElementById('img' + i).style.transform = "scale(1.05,1.05)";
+      }
+      setTimeout(function () {
+        for (var i = 0; i < 8; i++) {
+          document.getElementById('img' + i).style.transition = "0.5s";
+          document.getElementById('img' + i).style.transform = "scale(0,0)"
+        }
+        document.getElementById('overlay').style.opacity = "1"
+        document.getElementById('input').style.transition = "0.6s"
+        document.getElementById('input').style.transform = "scale(1.1,1.1)"
+        document.getElementById('input').style.opacity = "1"
+        document.getElementById('text1').style.opacity = "1"
+        document.getElementById('text1').style.top = "50%"
+        document.getElementById('buttone').style.opacity = "1"
+        setTimeout(function () {
+          document.getElementById('input').style.transition = "0.2s"
+          document.getElementById('input').style.transform = "scale(1,1)"
+        }, 600);
+      }, 100);
+
+      if (number == 0) {
+        document.getElementById('text3').innerHTML = "CEO and co-owner of Bao Games";
+        document.getElementById('text4').innerHTML = "Hello people from the internet, I am the computer legend <b>Ray Bao</b>. As of 2019, i am 35 and I live my life with my wife and my 2 kids (Babatungee and Cinderella) in Toronto. I have been running this website and my company since 2001 with the help of my beautiful wife. We've now have been married for 5 years and hope to continue running this website for all you steamed baos. If you do not believe I am a worthy sales person, think again. I studied in Computer Science for my bachelor, masters and PhD. My greatest accomplishements are very simple because there are only 3. Firstly is my wife, secondly is my company and thridly is my education. I love life and hope you can find what you want from our game.";
+        document.getElementById('text5').innerHTML = "Harvard University";
+        document.getElementById('text6').innerHTML = "Level 6 employee for Microsoft";
+        document.getElementById('text7').innerHTML = "Skiing, allergic to eggs and really short";
+      }
+      if (number == 1) {
+        document.getElementById('text3').innerHTML = "Lead Graphic Designer";
+        document.getElementById('text4').innerHTML = "Hello, my name is <b>Matthew Ma</b>. Something about me is that I love designing and building houses. As a kid, my life goal was to build my own house. I took lessons, looked online and visited these beautiful modern houses that inspired me for my futur home. If my house became a sucess, I would have tried to build houses for my friends because they are so cool. In the end, I took this job because it allows me to be more creativity fullfiled and artistically inclined. On top of that, I am finally able to work and see alongside some of my high school friends again. Basically, this job is also cool.";
+        document.getElementById('text5').innerHTML = "University of Toronto";
+        document.getElementById('text6').innerHTML = "Architect Intership";
+        document.getElementById('text7').innerHTML = "Loves pretty houses, hates kids";
+      }
+      if (number == 2) {
+        document.getElementById('text3').innerHTML = "Co-owner of Bao Games";
+        document.getElementById('text4').innerHTML = "Hey, my name is <b>Emma Huang</b>. My story starts in Univeristy where I became an intern for computer scientists and data analysts. I continued to do the same thing for the next 4 years, thus finding the job and tasks very boring. Then, I started to apply to game developper to get a little more spice in the job. In the end, I started to work at Nintendo in their game developping sector. After a few years on the job (the job was great btw), I got a call from Ray Bao about his new game company. Immidiately, I accepted the job that in which I can work with past mates and develop brand new games.";
+        document.getElementById('text5').innerHTML = "University of Waterloo";
+        document.getElementById('text6').innerHTML = "Lead Developper for Nintendo";
+        document.getElementById('text7').innerHTML = "Really short, loves to draw, loves kids";
+      }
+      if (number == 3) {
+        document.getElementById('text3').innerHTML = "Assistant Graphic Designer";
+        document.getElementById('text4').innerHTML = "Ni hao, Who de min zi shi <b>Debbie Zhao</b>. I am a chinese immigrant who came from China to study in university. At first, I wanted to go to med school but eventually, I found that it was not what I wanted to do in life so I started to look at other oppertunities. Evetually, I picked up graphical design and decided to work for this great company. I am really grateful for the oppertunity to work with other talented graphical designers and will definitly learn a lot more about it in the next few years working here. ";
+        document.getElementById('text5').innerHTML = "McMaster University";
+        document.getElementById('text6').innerHTML = "Lead Designer for websites";
+        document.getElementById('text7').innerHTML = "Really short, loves to draw, loves kids";
+      }
+      if (number == 4) {
+        document.getElementById('text3').innerHTML = "Comedic Relief of Bao Games";
+        document.getElementById('text4').innerHTML = "Bonjour, I am a meme (<b>Daniel Chen</b>). Honestly, I did not know I was gonna be put on our main page for our about page so I do not really know what to put up here. Well, I know one question is on your mind, what does he really bring to the workplace. Well, I like to think that the succes of the company is really 50% of my work because I keep these weird tech nerdy people at work with all sort of fun events and drinks. I bet these people could not work for another month if they lost me.";
+        document.getElementById('text5').innerHTML = "University of British Columbia";
+        document.getElementById('text6').innerHTML = "Whats a degree?";
+        document.getElementById('text7').innerHTML = "Volleyball, kinda fit, am a kid";
+      }
+      if (number == 5) {
+        document.getElementById('text3').innerHTML = "Advertising Head";
+        document.getElementById('text4').innerHTML = "Hello, my name is <b>Sharon Xu</b>. I am in charge of the advertising as well all of the writing that is used or produced on any products of ours. Coming from a literary art school and writing since I was as kid, I loved english (kinda). At first, becoming a journalist was the dream job but after being offered such a job, there was no way I could decline. This job is kinda like a journalist but better. My writing is still public, I can write about events and what we do but there is an extra imagination factor that makes this job just so much better than being a journalist. ";
+        document.getElementById('text5').innerHTML = "Ryerson University";
+        document.getElementById('text6').innerHTML = "Journalist for NYT";
+        document.getElementById('text7').innerHTML = "Writing, reading and writing";
+      }
+      if (number == 6) {
+        document.getElementById('text3').innerHTML = "Finance and Business Head";
+        document.getElementById('text4').innerHTML = "Hey buddies, my name is Jarry and my job is to sort all od the deals and money for this company. To be honest, I love money more than anything in this world. Even as a kid, I wanted to learn how to gain money effiently while not being to hard. Such jobs such as doctors, pharmacists or surgeons pay really well but those jobs takes too much effort so I decided to become a business man. In the end, everything planned out perfectly because now, I have this sick job hadling and taking away such large amount of money everything single day. I also make the trade deals but that is irrevelant.";
+        document.getElementById('text5').innerHTML = "University of British Columbia";
+        document.getElementById('text6').innerHTML = "Lead Developper for Apple";
+        document.getElementById('text7').innerHTML = "Volleyball, kinda fit, am a kid";
+      }
+      if (number == 7) {
+        document.getElementById('text3').innerHTML = "Public Relation Head ";
+        document.getElementById('text4').innerHTML = "Heyo, my name is linda and I am the head for public relation. my job essentially is too make sure that the office space is peaceful and there are not any unintentional confrontation. Trust me, in the past, there has been people inside of this office that get into fight for no reason. On top of the being friendly to the people of the office, I have to always be nice to customers and business partners. Sadly, all of this time being nice and approchable is kinda sad. I just wanna flip someone off.";
+        document.getElementById('text5').innerHTML = "Yal univeristy";
+        document.getElementById('text6').innerHTML = "Public Relation head for Microsoft";
+        document.getElementById('text7').innerHTML = "Coffee, sleep and eat";
+      }
+    }
+
+    function back() {
+      document.getElementById('input').style.transition = "0.2s"
+      document.getElementById('input').style.transform = "scale(1.05,1.05)"
+      document.getElementById('overlay').style.opacity = "0"
+      document.getElementById('text1').style.opacity = "0"
+      document.getElementById('text1').style.top = "60%"
+      document.getElementById('buttone').style.opacity = "0"
+      setTimeout(function () {
+        document.getElementById('input').style.transform = "scale(0,0)"
+      }, 200);
+      setTimeout(function () {
+        document.getElementById('input').style.opacity = "0"
+        for (var i = 0; i < 8; i++) {
+          document.getElementById('img' + i).style.transition = "0.3s";
+          document.getElementById('img' + i).style.transform = "scale(1.05,1.05)";
+        }
+      }, 400);
+      setTimeout(function () {
+        for (var i = 0; i < 8; i++) {
+          document.getElementById('img' + i).style.transition = "0.2s";
+          document.getElementById('img' + i).style.transform = "scale(1,1)";
+        }
+        document.getElementById('images').style.display = "none"
+        document.getElementById('text2').style.display = "none"
+        document.getElementById('overlay').style.display = "none"
+      }, 700);
+    }
+
+    function link() {
+      document.getElementById('link').click()
+    }
+    </script>
+  </body>
+</html>

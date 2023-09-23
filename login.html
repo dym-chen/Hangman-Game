@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Shadows Into Light Two' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Patrick Hand SC' rel='stylesheet'>
+    <title></title>
+    <style media="screen">
+    @import url("https://fonts.googleapis.com/css?family=PT+Sans+Narrow&display=swap");
+
+      body {
+        font-family: "PT Sans Narrow", sans-serif;
+        background : url('Images/wall1.jpg');
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      .center1 {
+        transform: translate(-50%, -50%);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        opacity: 0;
+        background-color: white;
+        transition: 1s;
+        padding: 20px;
+        min-width: 20%;
+        min-height: 40%;
+        box-shadow: 0px 0px 20px 5px #544745;
+      }
+       .center {
+         transform: translate(-50%, -50%);
+         position: absolute;
+         top: 50%;
+         left: 50%;
+       }
+       .start {
+         position: absolute;
+         width: 100%;
+         height: 100vh;
+         background-color: black;
+         display: block;
+         opacity : 1;
+         transition: 1s;
+       }
+       .load {
+         color: white;
+         font-size: 25px;
+         display : inline-block;
+       }
+       .load p {
+         display: inline-block;
+         color: white;
+         margin: 1px;
+         padding: 0;
+         animation-name : load;
+         animation-iteration-count : infinite;
+       }
+       .load p:nth-child(1) {
+         animation-delay : 0;
+         animation-duration : 1s;
+       }
+       .load p:nth-child(2) {
+         animation-duration : 1s;
+         animation-delay : 0.25s;
+       }
+       .load p:nth-child(3) {
+         animation-duration : 1s;
+         animation-delay : 0.5s;
+       }
+       @keyframes load {
+         0% {
+           transform: scale(1, 1);
+         }
+         50% {
+           transform: scale(1.3, 1.3);
+         }
+         100% {
+           transform: scale(1, 1);
+         }
+       }
+       .lds-ring {
+         display: inline-block;
+         position: relative;
+         width: 80px;
+         height: 80px;
+       }
+       .lds-ring div {
+         box-sizing: border-box;
+         display: block;
+         position: absolute;
+         width: 64px;
+         height: 64px;
+         margin: 8px;
+         border: 8px solid white;
+         border-radius: 50%;
+         animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+         border-color: white transparent transparent transparent;
+       }
+       .lds-ring div:nth-child(1) {
+         animation-delay: -0.45s;
+       }
+       .lds-ring div:nth-child(2) {
+         animation-delay: -0.3s;
+       }
+       .lds-ring div:nth-child(3) {
+         animation-delay: -0.15s;
+       }
+       @keyframes lds-ring {
+         0% {
+           transform: rotate(0deg);
+         }
+         100% {
+           transform: rotate(360deg);
+         }
+       }
+       .buttone {
+         font-family: 'Patrick Hand SC';
+         width : 120px;
+         height : 30px;
+         font-size: 20px;
+         transition: 0.5s;
+         text-align: center;
+         cursor: pointer;
+         position: absolute;
+         top: 3%;
+         left: 3%;
+         border: none;
+         background-color: white;
+       }
+       .buttone span {
+         position : absolute;
+         left : 0%;
+         opacity: 0;
+         transition: 0.5s;
+         transform: rotate(180deg);
+       }
+       .buttone:hover {
+         left : 6%;
+       }
+       .buttone:hover span {
+         left : -10%;
+         opacity : 1;
+       }
+       .container {
+         border: none;
+         border-radius: 5px;
+         padding: 0 8px;
+         position: relative;
+         background-color: #DF6767;
+         width: 80%;
+         font-family: 'Patrick Hand SC';
+       }
+       .container input {
+         border: none;
+         font-size: 20px;
+         margin: 16px 0 10px;
+         outline: 0;
+         width: 100%;
+         background-color: #DF6767;
+         font-family: 'Patrick Hand SC';
+         z-index: 1;
+       }
+       label {
+         font-size: 16px;
+         position: absolute;
+         transform-origin: top left;
+         transform: translate(0, 16px) scale(1);
+         transition: all .1s ease-in-out;
+         z-index: 0;
+        }
+      .container.active label {
+        transform: translate(0, 4px) scale(.75);
+        }
+      .button {
+        font-family: 'Patrick Hand SC';
+        min-width: 20%;
+        font-size: 18px;
+        border: outset;
+        border-radius: 2px;
+        transition: 0.4s;
+        box-shadow: 0px 0px 5px 1px #C86262;
+        position: relative;
+        opacity: 0.3;
+      }
+      .button:hover {
+        box-shadow: 0px 0px 8px 1px #A85B5B;
+      }
+      .button:active {
+        transform: scale(0.9, 0.9);
+      }
+      .line {
+        transition: 4s;
+        stroke-dashoffset: 100%;
+        stroke-dasharray: 100%;
+        transition-timing-function: linear;
+      }
+      .line1 {
+        transition: 4s;
+        stroke-dashoffset: 100%;
+        stroke-dasharray: 100%;
+        transition-timing-function: linear;
+      }
+      .circle {
+        transition: 3s;
+        stroke-dashoffset: 377px;
+        stroke-dasharray: 377px;
+        transition-timing-function: ease-in-out;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="start" id="overlay">
+      <div class="center">
+        <div class="lds-ring" id="ring"><div></div><div></div><div></div><div></div></div> <br>
+        <div class="load" id="loading">Loading <p>.</p><p>.</p><p>.</p> </div>
+      </div>
+    </div>
+
+    <div class="center1" id="main" style="z-index: 1;">
+      <div class="back">
+        <a href="Index.html"><button type="button" name="button" class="buttone" >Back to home  <span>&#10140;</span></button></a>
+      </div>
+
+
+      <br>
+      <h1><u>Login into your <br>Bao Games account</u></h1>
+      <div id="container" class="container">
+        <label for="label">Username</label>
+        <input id="input" type="text">
+      </div>
+      <br>
+      <div id="container1" class="container">
+        <label for="label">Password</label>
+        <input id="input1" type="text">
+      </div>
+      <br><br>
+
+      <center>
+      <button type="button" name="button" class="button" id="click">Login</button>
+    </center>
+
+    </div>
+
+    <div class="center1" id="main1" style="z-index: 0;">
+      <svg width="100%" height="135px">
+        <circle cx="50%" cy="70" r="60" stroke="black" stroke-width="2" fill="#81D479" class="circle" id="circle"/>
+        <line stroke-linecap="round" x1="45%" y1="80" x2="48%" y2="90" class="line" style="stroke: black;stroke-width: 6" id="line" />
+        <line stroke-linecap="round" x1="48%" y1="90" x2="58%" y2="40" class="line1" style="stroke: black;stroke-width: 6"  id="line1"/>
+      </svg>
+      <br><br>
+      <center>
+      <div class="load" style="color: black; transition: 0.5s;" id="text">Please wait <p style="color: black;">.</p><p style="color: black;">.</p><p style="color: black;">.</p> </div>
+      <h1 id="text1" style="opacity: 0; transition: 4s;">Thanks for logging in, <br>You will directed to the game now </h1>
+    </center>
+    </div>
+
+    <a href="start.html" id="link"></a>
+    <script type="text/javascript">
+
+//opening animation
+    setTimeout(function() {
+      document.getElementById('overlay').style.opacity = "0";
+      document.getElementById('main').style.opacity = "1";
+    }, 2000);
+    setTimeout(function() {
+      document.getElementById('ring').style.display = "none";
+      document.getElementById('loading').style.display = "none";
+      document.getElementById('overlay').style.opacity = "0.3"
+    }, 3100);
+
+//text input animation
+    var input = document.getElementById('input');
+    var container = document.getElementById('container');
+    input.addEventListener('focus', function()  {
+      container.classList.add('active');
+    });
+    input.addEventListener('blur', function() {
+      if (input1.value != "" || input.value != "") {
+        document.getElementById('click').style.opacity = "1"
+        document.getElementById('click').setAttribute("onclick", "next()");
+      }
+      if (input.value.trim() == "" ) {
+        container.classList.remove('active');
+        document.getElementById('input').value = ""
+        document.getElementById('click').style.opacity = "0.3"
+        document.getElementById('click').removeAttribute("onclick");
+      }
+      else {}
+    });
+
+    var input1 = document.getElementById('input1');
+    var container1 = document.getElementById('container1');
+    input1.addEventListener('focus', function()  {
+      container1.classList.add('active');
+    });
+    input1.addEventListener('blur', function() {
+      if (input1.value != "" || input.value != "") {
+        document.getElementById('click').style.opacity = "1"
+        document.getElementById('click').setAttribute("onclick", "next()");
+      }
+      if (input1.value.trim() == "" ) {
+        container1.classList.remove('active');
+        document.getElementById('input1').value = ""
+        document.getElementById('click').style.opacity = "0.3"
+        document.getElementById('click').removeAttribute("onclick");
+      }
+      else {}
+    });
+
+
+//ending animation
+    function next() {
+      document.getElementById('main').style.opacity = "0"
+      setTimeout(function () {
+        document.getElementById('main').style.display = "none"
+        document.getElementById('main1').style.opacity = "1"
+      }, 500);
+      setTimeout(function () {
+        document.getElementById('circle').style.strokeDashoffset = "0px"
+      }, 1000);
+      setTimeout(function () {
+        document.getElementById('line').style.strokeDashoffset = "0px"
+      }, 3000);
+      setTimeout(function () {
+        document.getElementById('line1').style.strokeDashoffset = "0px"
+        document.getElementById('text').style.opacity = "0";
+        document.getElementById('text1').style.opacity ="1"
+      }, 3100);
+      setTimeout(function () {
+        document.getElementById('ring').style.display = "block";
+        document.getElementById('loading').style.display = "block";
+        document.getElementById('main1').style.opacity = "0"
+        document.getElementById('overlay').style.opacity = "1"
+      }, 5000);
+      setTimeout(function () {
+        document.getElementById('link').click()
+      }, 6500);
+    }
+
+
+    </script>
+  </body>
+</html>

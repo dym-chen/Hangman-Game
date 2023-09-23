@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+
+    <div id="1"></div>
+    <div id="2"></div>
+    <div id="3"></div>
+    <br>
+    <div id="4"></div>
+    <br>
+    <div id="5"></div>
+    <div id="6"></div>
+    <br>
+    <div id="7"></div>
+    <div id="8"></div>
+    <div id="9"></div>
+    <br>
+    <div id="10"></div>
+
+  <body>
+
+    <script type="text/javascript">
+      var test1 = new Array(4);
+      var test1 = [98, 87, 64, 82];
+      var total = 0;
+      document.getElementById('1').innerHTML = "The third value is <b>" + test1[3] + "</b>"
+      document.getElementById('2').innerHTML = "The full array is <b>" + test1 + "</b>"
+      for (var i = 0; i < test1.length; i++) {
+        var total =+ test1[i]
+      }
+      document.getElementById('3').innerHTML = "The average of the value from the array is <b>" + total/i + "</b>"
+
+
+      const MAXSIZE = 10;
+      var sample = new Array(MAXSIZE);
+      var sample = [0,0,0,0,0,0,0,0,0,0];
+      var temp = 0;
+      sample[3] = 28;
+      var eight = sample[2] + sample[3]
+      sample[8] = eight
+      sample[1] = sample[8];
+      sample[2] += temp
+      sample[2] = sample[1]
+      sample[1] = temp
+      console.log(sample);
+      document.getElementById('4').innerHTML = "The array is <b>" + sample + "</b>"
+
+
+      var size = 27;
+      var claz = new Array(size);
+      var numa = new Array();
+      claz.fill(90,0)
+      for (var i = 0; i <=27 ; i++) {
+        numa.push(Math.floor(Math.random() * 900 + 100))
+      }
+      document.getElementById('5').innerHTML = "The class array is <b>" + claz + "</b>"
+      document.getElementById('6').innerHTML = "The number array is <b>" + numa + "</b>"
+
+
+      var array1 = [];
+      var average = 0;
+      var max = 0;
+      for (var i = 0; i <= 10; i++) {
+        array1.push(Math.floor(Math.random() * 100 + 1))
+        average += array1[i]
+        if (max < array1[i]) {
+          max = array1[i]
+        }
+      }
+      document.getElementById('7').innerHTML = "The array is <b>" + array1 + "</b>"
+      document.getElementById('8').innerHTML = "The average of your array is <b>" + average/10 + "</b>"
+      document.getElementById('9').innerHTML = "The biggest number in your array is <b>" + max + "</b>"
+
+
+      var char = ["intellect", "eyes", "laugh", "personality", "smile"];
+      var adj = ["beautiful", "amazing", "brilliant", "genuine", "one of a kind"];
+      var noun = ["hero", "genius", "unicorn", "supermodel", "teddy bear"];
+      var ran1 = Math.floor(Math.random() * 4 + 1)
+      var ran2 = Math.floor(Math.random() * 4 + 1)
+      var ran3 = Math.floor(Math.random() * 4 + 1)
+      document.getElementById('10').innerHTML = "You have the " + char[ran1] + " of a " + adj[ran2] + " " + noun[ran3] + "!"
+
+
+
+    </script>
+  </body>
+</html>

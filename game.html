@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Shadows Into Light Two' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Patrick Hand SC' rel='stylesheet'>
+    <title></title>
+    <style media="screen">
+    @import url("https://fonts.googleapis.com/css?family=PT+Sans+Narrow&display=swap");
+    body {
+      font-family: 'Shadows Into Light Two';
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .bordered {
+      border-bottom: 5px solid #000;
+      border-radius: 5px;
+      min-height : 130px;
+      width : 80px;
+      margin: 0px 10px 0px 10px;
+      display: inline-block;
+      position: relative;
+      transition: 0.5s;
+      font-size: 105px;
+      font-weight: 800;
+      transition : 0.3s;
+    }
+    .bordered p {
+      margin : 0;
+      padding: 0;
+      opacity: 0;
+    }
+    .overlay {
+      position: absolute;
+      top : 0;
+      left : 10%;
+      transition : 0.5s;
+      margin-bottom : 50px;
+      color: black;
+      opacity: 0;
+      text-align: center;
+    }
+    .button {
+      font-family: 'Shadows Into Light Two';
+      position: relative;
+      display: inline-block;
+      padding : 0px;
+      margin : 3px;
+      width: 1.3em;
+      height: 1.45em;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+      border : 4px solid black;
+      font-size: 3.5em;
+      vertical-align: center;
+      border-radius: 10px;
+      opacity : 1;
+    }
+    .button:hover {
+      transform: scale(1.1, 1.1);
+      box-shadow: 0px 0px 10px 1px black;
+    }
+    .button:active {
+      transform: scale(0.9, 0.9);
+      transition: 0.1s;
+    }
+    .svg polygon {
+      stroke: black;
+      fill: transparent;
+      transition: fill 0.3s ease-in-out;
+    }
+    .svg rect {
+      transform: translateY(100%);
+      fill: black;
+      transition: 1s;
+    }
+    .svg:hover rect {
+      transform: translateY(0);
+      fill: #818181;
+    }
+    .title {
+      position: absolute;
+      top: 0;
+      left: 45%;
+    }
+    .point {
+      position: absolute;
+      right: 0;
+      top: 0;
+      padding: 5px;
+    }
+    .point h1,h2,h3,h4 {
+      margin : 0;
+      padding : 0;
+    }
+    .learn {
+      position: absolute;
+      bottom: 1%;
+      left: 0%;
+      margin-left : -25px;
+      width : 100px;
+      transition: 0.5s;
+      cursor : pointer;
+    }
+    .overlay1 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .center {
+      font-family: 'Patrick Hand SC';
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      font-size: 35px;
+      font-weight: 600;
+      border : 4px solid black;
+      background-color: white;
+      padding : 10px;
+      transition: 1s;
+      display : none;
+      opacity : 0;
+    }
+    .center p {
+      margin : 0;
+      padding : 0;
+    }
+    .okay {
+      font-family: 'Patrick Hand SC';
+      position: absolute;
+      top: 85%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      font-size: 45px;
+      font-weight: 400;
+      background-color: black;
+      color : white;
+      border : none;
+      transition: 1s;
+      display : none;
+      opacity : 0;
+    }
+    .okay:hover {
+      color: #538AB8;
+    }
+    .enter {
+      font-family: 'Shadows Into Light Two';
+      position: relative;
+      display: inline-block;
+      padding : 0px;
+      margin : 3px;
+      width: 6.4em;
+      height: 1.4em;
+      background-color: black;
+      transition: all 0.5s ease-in-out;
+      border : 4px solid black;
+      font-size: 3.3em;
+      border-radius: 10px;
+      opacity : 1;
+      color: white;
+    }
+    .enter:hover {
+      transform: scale(1.1, 1.1);
+      box-shadow: 0px 0px 10px 1px black;
+    }
+    .enter:active {
+      transform: scale(0.9, 0.9);
+      transition: 0.1s;
+    }
+    ::selection {
+      color: none;
+      background: none;
+    }
+    .container {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #ededed;
+      background-color: white;
+      opacity: 0;
+      transition: 0.5s;
+      width: 100%;
+      position: relative;
+    }
+
+    .loader {
+      position : absolute;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 47%;
+      transition: 0.5s;
+      width: 40%;
+      min-height : 40vh;
+      border-radius : 10px;
+      border : 0px solid black;
+      transition: 0.5s;
+    }
+    .input {
+      transition: 0.5s;
+      font-size: 25px;
+      font-family: 'Shadows Into Light Two';
+      min-width: 400px;
+      height: 50px;
+      border-radius: 1px solid black;
+      border-radius: 1px;
+    }
+    @keyframes showTopText {
+      0% {
+        transform: translate3d(0, 100%, 0);
+      }
+      100% {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+    @keyframes showBottomText {
+      0% {
+        transform: translate3d(0, -100%, 0);
+      }
+      100% {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+    .animated-title {
+      color: #222;
+      font-family: 'PT Sans Narrow','Roboto', Arial, sans-serif;
+      height: 90vmin;
+      left: 50%;
+      position: absolute;
+      top: 70%;
+      transform: translate(-50%, -50%);
+      width: 90vmin;
+      display: none;
+      font-weight: 800;
+    }
+    .animated-title > div {
+      height: 50%;
+      overflow: hidden;
+      position: absolute;
+      width: 100%;
+    }
+    .animated-title > div div {
+      font-size: 9vmin;
+      padding: 2vmin 0;
+      position: absolute;
+    }
+
+    .animated-title > div.text-top {
+      border-bottom: 1vmin solid #000;
+      top: 0;
+    }
+    .animated-title > div.text-top div {
+      bottom: 0;
+      transform: translate(0, 100%);
+    }
+
+    .animated-title > div.text-bottom {
+      bottom: 0;
+    }
+    .animated-title > div.text-bottom div {
+      top: 0;
+      transform: translate(0, -100%);
+    }
+    .second {
+      margin-top : -5vh;
+      position: relative;
+      font-family: 'Patrick Hand SC';
+      font-size: 8vmin;
+    }
+    .position {
+      font-size: 4vmin;
+      position: absolute;
+      top: 35%;
+      left: 46%;
+      transform: translate(-50%, -50%);
+      display: none;
+    }
+    .position h1,h2,h3 {
+      margin : 0;
+      padding: 0;
+    }
+    .block {
+      width: 0%;
+      height: 100px;
+      background: #ffb510;
+      position: absolute;
+      top: 25%;
+      left: 0;
+      z-index : 2;
+    }
+    @keyframes animate {
+      0% {
+        left: 0;
+        width: 0;
+      }
+      50% {
+        left: 0;
+        width: 100%;
+      }
+      100% {
+        left: 100%;
+        width: 0;
+      }
+    }
+    .animate1 {
+      animation: animate 2s ease-in-out forwards;
+    }
+    .animate2 {
+      animation: showTopText 1s;
+      animation-fill-mode: forwards;
+    }
+    .animate3 {
+      animation: showBottomText 0.5s;
+      animation-fill-mode: forwards;
+    }
+    .appear {
+       opacity : 0;
+       transition: 0.5s;
+       z-index : 1;
+    }
+    .i {
+      font-family: 'Patrick Hand SC';
+      width : 40%;
+      height : 40vh;
+      border: 1px solid black;
+      transform: translate(-50%, -50%);
+      top: 30%;
+      left: 30%;
+      position: absolute;
+      transition: 1s;
+      transform: scale(0.01,0.01);
+      z-index : 800;
+      background-color: white;
+    }
+    .i p{
+      margin: 5px;
+    }
+    .center1 {
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
+      position: absolute;
+      width : 100%;
+    }
+    .buttone {
+      font-family: 'Patrick Hand SC';
+      width : 28%;
+      height : 30px;
+      font-size: 20px;
+      transition: 0.5s;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+    }
+    .buttone span {
+      position : absolute;
+      right : 20%;
+      opacity: 0;
+      transition: 0.5s;
+    }
+    .buttone:hover {
+      padding-right : 15px;
+    }
+    .buttone:hover span {
+      right : 15%;
+      opacity : 1;
+      animation : rotate 1s 0.5s infinite linear;
+    }
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    .gif{
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: url(Animations/confetti.gif);
+      width: 100%;
+      height: 100vh;
+      display: none;
+    }
+    .animations {
+      width : 40%;
+      height : 38vh;
+      position: absolute;
+      top: 43%;
+      left: 52%;
+      z-index: 400;
+      border : 5px solid black;
+      border-radius: 5px;
+    }
+    .back {
+       position : absolute;
+       width : 100%;
+       height : 100vh;
+       background-color : white;
+       top:0;
+       display : block;
+       opacity : 1;
+       transition : 0.5s;
+    }
+    .buttone1 {
+      font-family: 'Patrick Hand SC';
+      width : 25%;
+      height : 85px;
+      font-size: 60px;
+      transition: 0.1s;
+      cursor: pointer;
+      position: absolute;
+      border-radius: 5px;
+      outline: none;
+      color: #fff;
+      background-color: #F08658;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 9px #999;
+      transition : 0.2s;
+    }
+    .buttone1:hover {
+      background-color: #D57043;
+    }
+
+    .buttone1:active {
+      background-color: #F08658;
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }
+    .buttone2 {
+      font-family: 'Patrick Hand SC';
+      width : 25%;
+      height : 85px;
+      font-size: 60px;
+      transition: 0.1s;
+      cursor: pointer;
+      position: absolute;
+      border-radius: 5px;
+      outline: none;
+      color: #fff;
+      background-color: #F34D4D;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 9px #999;
+    }
+    .buttone2:hover {
+      background-color: #D54343;
+    }
+
+    .buttone2:active {
+      background-color: #F34D4D;
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }
+    .center2 {
+      transform: translate(-50%, -50%);
+      position: absolute;
+      width: 80%;
+      text-align: center;
+      font-size: 40px;
+      z-index : 2000;
+      transition: 0.5s
+    }
+    </style>
+  </head>
+  <body>
+<div style="opacity : 0; transition : 1s; display : block; position : relative; width: 100%; height: 100vh; transition: 0.2s;" id="main">
+  <a href="Index.html"><svg class="svg" height="90" viewBox="0 0 100 100" width="80" >
+      <line x1="58" y1="22" x2="58" y2="0" style="stroke: black; stroke-width:10"/>
+      <line x1="8" y1="32" x2="40" y2="10" style="stroke: black; stroke-width: 6" stroke-linecap="round"/>
+      <line x1="40" y1="10" x2="72" y2="32" style="stroke: black; stroke-width: 6" stroke-linecap="round"/>
+
+      <polygon points="18,65 18,35 40,20 62,35 62,65 47,65 47,45 33,45 33,65" style="stroke-width:3" stroke-linecap="round"></polygon>
+      <clippath id="star">
+        <polygon points="18,65 18,35 40,20 62,35 62,65 47,65 47,45 33,45 33,65" style="stroke-width:3"></polygon>
+      </clippath>
+      <g clip-path="url(#star)">
+        <rect height="100%" width="100%" stroke="3"></rect>
+      </g>
+    </svg></a>
+
+    <center>
+      <div class="title">
+        <h1 id="category" style="font-size : 25px;">faosidnfoiasnd</h1>
+      </div>
+      <table class="point">
+        <tr>
+          <td rowspan="2"><img src="Images/heart.png" alt="" style="width : 40px;"></td>
+          <td style="padding : 0px 0px 0px 5px; float : right;"><h2 >Hearts : <b id="hearts">5</b></h2> </td>
+        </tr>
+        <tr>
+          <td><h2 style="float : right">Best : 0</h2> </td>
+        </tr>
+      </table>
+
+    <div id="body"></div>
+    <hr width="90%" style="height : 3px; background-color : black;">
+  </center>
+    <div style="display : inline-block; margin-left : 15%;">
+      <button type="button" class="button" name="button" onclick='uncover("a", 1)' id="a">A <div class="overlay1" id="1"></div> </button>
+      <button type="button" class="button" name="button" onclick='uncover("b", 2)' id="b">B <div class="overlay1" id="2"></div></button>
+      <button type="button" class="button" name="button" onclick='uncover("c", 3)' id="c">C <div class="overlay1" id="3"></div></button>
+      <button type="button" class="button" name="button" onclick='uncover("d", 4)' id="d">D <div class="overlay1" id="4"></div></button>
+      <button type="button" class="button" name="button" onclick='uncover("e", 5)' id="e">E <div class="overlay1" id="5"></div></button>
+      <button type="button" class="button" name="button" onclick='uncover("f", 6)' id="f">F <div class="overlay1" id="6"></div></button> <br>
+      <button type="button" class="button" name="button" onclick='uncover("g", 7)' id="g">G <div class="overlay1" id="7"></div></button>
+      <button type="button" class="button" name="button" onclick='uncover("h", 8)' id="h">H <div class="overlay1" id="8"></div></button>
+      <button type="button" class="button" name="button" onclick='uncover("i", 9)' id="i">I <div class="overlay1" id="9"></div></button>
+      <button type="button" class="button" name="button" onclick='uncover("j", 10)' id="j">J <div class="overlay1" id="10"></div></button>
+      <button type="button" class="button" name="button" onclick='uncover("k", 11)' id="k">K <div class="overlay1" id="11"></div></button>
+      <button type="button" class="button" name="button" onclick='uncover("l", 12)' id="l">L <div class="overlay1" id="12"></div></button> <br>
+      <button type="button" class="button" name="button" onclick='uncover("m", 13)' id="m">M <div class="overlay1" id="13"></div></button>
+      <button type="button" class="button" name="button" onclick='uncover("n", 14)' id="n">N <div class="overlay1" id="14"></div></button>
+      <button type="button" class="button" name="button" onclick='uncover("o", 15)' id="o">O <div class="overlay1" id="15"></div></button>
+      <button type="button" class="button" name="button" onclick='uncover("p", 16)' id="p">P <div class="overlay1" id="16"></div></button>
+      <button type="button" class="button" name="button" onclick='uncover("q", 17)' id="q">Q <div class="overlay1" id="17"></div></button>
+      <button type="button" class="button" name="button" onclick='uncover("r", 18)' id="r">R <div class="overlay1" id="18"></div></button> <br>
+      <button type="button" class="button" name="button" onclick='uncover("s", 19)' id="s">S <div class="overlay1" id="19"></div></button>
+      <button type="button" class="button" name="button" onclick='uncover("t", 20)' id="t">T <div class="overlay1" id="20"></div></button>
+      <button type="button" class="button" name="button" onclick='uncover("u", 21)' id="u">U <div class="overlay1" id="21"></div></button>
+      <button type="button" class="button" name="button" onclick='uncover("v", 22)' id="v">V <div class="overlay1" id="22"></div></button>
+      <button type="button" class="button" name="button" onclick='uncover("w", 23)' id="w">W <div class="overlay1" id="23"></div></button>
+      <button type="button" class="button" name="button" onclick='uncover("x", 24)' id="x">X <div class="overlay1" id="24"></div></button> <br>
+      <button type="button" class="button" name="button" onclick='uncover("y", 25)' id="y">Y <div class="overlay1" id="25"></div></button>
+      <button type="button" class="button" name="button" onclick='uncover("z", 26)' id="z">Z <div class="overlay1" id="26"></div></button>
+      <button type="button" name="button" class="enter" onclick="last()">Press to Guess</button>
+    </div>
+
+    <img src="Animations/Noose.gif" alt="" class="animations" id="animation">
+    <img src="Images/question.png" alt="" class="learn" onclick="fun()" />
+  </div>
+
+    <div id="back" class="back">
+      <div class="center2" id="buttons1" style="top: 30%; left: 50%; opacity : 0; transition : 1.5s;">
+        <h1><u>Choose your category</u></h1>
+        <button type="button" class="buttone1" id="buttones1" onclick="scale1('animal')" name="button" style="left : 20%; top: 80%">Animal</button>
+        <button type="button" class="buttone1" id="buttones2" onclick="scale1('location')" name="button" style="left : 55%; top: 80%">Location</button>
+        <button type="button" class="buttone1" id="buttones3" onclick="scale1('celebrity')" name="button" style="left : 20%; top: 140%">Celebrity</button>
+        <button type="button" class="buttone1" id="buttones4" onclick="scale1('random')" name="button" style="left : 55%; top: 140%">Random</button>
+      </div>
+      <div class="center2" style="opacity : 0; display : none; transform : scale(0.1, 0.1); top: 15%; left: 10%;" id="buttons2">
+        <h1 id="header" style="transition : 0.4s;"><u>Choose your difficulty</u></h1>
+        <button type="button" class="buttone2" id="buttones5" onclick="scale2('easy')" name="button" style="left : 8%; top: 85%">Easy</button>
+        <button type="button" class="buttone2" id="buttones6" onclick="scale2('medium')" name="button" style="left : 38%; top: 85%">Medium</button>
+        <button type="button" class="buttone2" id="buttones7" onclick="scale2('hard')" name="button" style="left : 68%; top: 85%">Hard</button>
+      </div>
+    </div>
+    <div id="txt" class="center">
+      <center>
+      <p>TRY TO GUESS THE SECRET WORD ONE LETTER AT A TIME! IF YOU EVER GUESS A LETTER THAT IS NOT INSIDE THE WORD, OUR FRIEND BILLY LOSES ONE HEART. TO WIN, SPELL OUT THE ENTIRE WORD BEFORE BILLY LOSES ALL HIS HEARTS.
+      BY THE WAY, YOUR BEST SCORE IS THE ACCUMULATION OF HEART GAINED ON CORRECT ANSWERS.</p>
+    </center>
+    </div>
+    <button id="but" type="button" name="button" class="okay" onclick="go()">OKAY!</button>
+
+      <div class="container" id="circle">
+        <div class="loader" id="loader">
+          <img src="Animations/ambulance.gif" id="target" style="width : 120%;">
+        </div>
+
+        <div id="inputT" style="opacity : 0; display : none; transition : 0.5s;">
+          <center>
+          <h1><u>Make your last guess</u></h1>
+          </center>
+          <input type="text" class="input" id="input" placeholder="What is the word?">
+        </div>
+      </div>
+
+      <div class="position" id="uno">
+        <div class="first">
+          <h1 style="font-family : 'Shadows Into Light Two';" id="text1"></h1>
+        </div>
+        <div class="second">
+          <span class="block" id="tres"></span>
+          <h1 id="text2" class="appear"></h1>
+        </div>
+      </div>
+
+      <div class="animated-title" id="dos">
+    <div class="text-top">
+      <div id="quatro">
+        <span>The actual word was</span>
+      </div>
+    </div>
+    <div class="text-bottom">
+      <div style="color : gray;" id="text3"></div>
+    </div>
+  </div>
+
+  <div class="i" id="ending">
+    <center>
+    <div class="center1">
+      <p style="font-size: 50px; font-weight: 800px;">You got it <b id="choice">CORRECT</b></p>
+      <p style="font-size: 25px;">The word was <u id="yi">dive</u> </p>
+      <p style="font-size: 25px;">Your guess was <u id="er">dive</u> </p>
+      <br>
+      <button type="button" name="button" class="buttone" onclick="replay()">Play again?  <span>&#8634;</span></button>
+    </div>
+  </center>
+  </div>
+
+  <div class="gif"  id="gif"></div>
+
+  <a href="start.html" id="link"></a>
+    <script type="text/javascript" src="wordlist.js"></script>
+    <script type="text/javascript">
+
+    document.getElementById('buttons1').style.opacity = "1"
+    var word = "";
+    var attempt = 0;
+    var once = 0;
+    var hearts = 5;
+    var best = 0;
+    var animationsCounter = 0;
+    var animations = ["Images/First.png", "Animations/Part_1.gif", "Images/Second.png", "Animations/Part_2.gif", "Images/Third.png", "Animations/Part_3.gif",
+    "Images/Forth.png","Animations/Part_4.gif", "Images/Fifth.png", "Animations/Part_5.gif", "Images/Sixth.png"]
+
+    function scale1(genre) {
+      document.getElementById('buttones1').style.transform = "scale(1.1)"
+      setTimeout(function () {
+        document.getElementById('buttones1').style.transition = "0.5s"
+        document.getElementById('buttones1').style.transform = "scale(0.1)"
+        document.getElementById('buttones1').style.opacity = "0"
+      }, 200);
+      setTimeout(function () {
+        document.getElementById('buttones3').style.transform = "scale(1.1)"
+      }, 200);
+      setTimeout(function () {
+        document.getElementById('buttones3').style.transition = "0.5s"
+        document.getElementById('buttones3').style.transform = "scale(0.1)"
+        document.getElementById('buttones3').style.opacity = "0"
+      }, 400);
+      setTimeout(function () {
+        document.getElementById('buttones4').style.transform = "scale(1.1)"
+      }, 400);
+      setTimeout(function () {
+        document.getElementById('buttones4').style.transition = "0.5s"
+        document.getElementById('buttones4').style.transform = "scale(0.1)"
+        document.getElementById('buttones4').style.opacity = "0"
+      }, 600);
+      setTimeout(function () {
+        document.getElementById('buttones2').style.transform = "scale(1.1)"
+      }, 600);
+      setTimeout(function () {
+        document.getElementById('buttones2').style.transition = "0.5s"
+        document.getElementById('buttones2').style.transform = "scale(0.1)"
+        document.getElementById('buttones2').style.opacity = "0"
+      }, 800);
+      setTimeout(function () {
+        document.getElementById('buttons1').style.opacity = "0"
+        document.getElementById('buttons2').style.display = "block"
+      }, 1000);
+      setTimeout(function () {
+        document.getElementById('buttons2').style.transform = "scale(1.1, 1.1)"
+        document.getElementById('buttons2').style.opacity = "1"
+      }, 1100);
+      setTimeout(function () {
+        document.getElementById('buttons2').style.transition = "0.2s"
+        document.getElementById('buttons2').style.transform = "scale(1, 1)"
+      }, 1600);
+      if (genre == "animal") {
+        var num = Math.floor(Math.random()*189+1);
+        var final = String(animalList[num]).toLowerCase()
+      }
+      if (genre == "celebrity") {
+        var num = Math.floor(Math.random()*100+1);
+        var final = String(celebretyList[num]).toLowerCase()
+      }
+      if (genre == "location") {
+        var num = Math.floor(Math.random()*85+1);
+        var final = String(locationList[num]).toLowerCase()
+      }
+      if (genre == "random") {
+        var num = Math.floor(Math.random()*1952+1);
+        var final = String(wordList[num]).toLowerCase()
+      }
+      document.getElementById('category').innerHTML = genre.toUpperCase()
+      word += final
+    }
+
+    function scale2(difficult) {
+      //create divs
+      var div = new Array();
+      for (var i = 0; i < word.length; i++) {
+        div[i] = document.createElement('div');
+        div[i].id = 'block' + i;
+        div[i].className = 'bordered';
+        document.getElementById('body').appendChild(div[i]);
+      }
+
+      var div1 = new Array();
+      for (var i = 0; i < word.length; i++) {
+        div1[i] = document.createElement('div');
+        div1[i].id = 'overlay' + i;
+        div1[i].className = 'overlay';
+        document.getElementById('block' + i).appendChild(div1[i]);
+      }
+      checkWord(word)
+
+      document.getElementById('buttones5').style.transform = "scale(1.1)"
+      setTimeout(function () {
+        document.getElementById('buttones5').style.transition = "0.5s"
+        document.getElementById('buttones5').style.transform = "scale(0.1)"
+        document.getElementById('buttones5').style.opacity = "0"
+      }, 200);
+      setTimeout(function () {
+        document.getElementById('buttones6').style.transform = "scale(1.1)"
+      }, 200);
+      setTimeout(function () {
+        document.getElementById('buttones6').style.transition = "0.5s"
+        document.getElementById('buttones6').style.transform = "scale(0.1)"
+        document.getElementById('buttones6').style.opacity = "0"
+      }, 400);
+      setTimeout(function () {
+        document.getElementById('buttones7').style.transform = "scale(1.1)"
+        document.getElementById('header').style.opacity = "0"
+      }, 400);
+      setTimeout(function () {
+        document.getElementById('buttones7').style.transition = "0.5s"
+        document.getElementById('buttones7').style.transform = "scale(0.1)"
+        document.getElementById('buttones7').style.opacity = "0"
+      }, 600);
+      if (difficult == "medium") {
+        animationsCounter += 2
+        attempt += 1
+        document.getElementById('hearts').innerHTML = "4"
+        document.getElementById('animation').src = "Animations/Noose1.gif"
+
+      }
+      if (difficult == "hard") {
+        animationsCounter += 4
+        attempt += 2
+        document.getElementById('hearts').innerHTML = "3"
+        document.getElementById('animation').src = "Animations/Noose2.gif"
+      }
+      startUp();
+    }
+
+    function startUp() {
+      document.getElementById('back').style.opacity = "0.8";
+      document.getElementById('main').style.opacity = "1"
+      if (animationsCounter == 0) {
+        var a = setTimeout(startUp1, 4500);
+      }
+      if (animationsCounter == 2) {
+        var a = setTimeout(startUp1, 3650);
+      }
+      if (animationsCounter == 4) {
+        var a = setTimeout(startUp1, 3150);
+      }
+      function startUp1() {
+        document.getElementById('back').style.opacity = "0";
+        document.getElementById('animation').src = animations[animationsCounter]
+      }
+      setTimeout(function () {
+        document.getElementById('back').style.display = "none";
+      }, 5000);
+    }
+
+    //check functions
+    function checkWord(wrd) {
+      console.log(word.length);
+      if (word.length >= 13) {
+        for (var i = 0; i < word.length; i++) {
+          document.getElementById('block' + i).style.width = "50px"
+        }
+      }
+      for (var i = 0; i < wrd.length; i++) {
+        var letter = wrd.charAt(i)
+        if (letter == " ") {
+          document.getElementById('block' + i).style.opacity = "0"
+          document.getElementById('overlay' + i).innerHTML = "."
+        }
+        if (letter == "-") {
+          document.getElementById('overlay' + i).innerHTML = "-"
+          document.getElementById('block' + i).style.borderBottom = "0px"
+          document.getElementById('overlay' + i).style.opacity = "1"
+          document.getElementById('overlay' + i).style.top = "10%"
+        }
+        if (letter == ".") {
+          document.getElementById('overlay' + i).innerHTML = "."
+          document.getElementById('block' + i).style.borderBottom = "0px"
+          document.getElementById('overlay' + i).style.opacity = "1"
+          document.getElementById('overlay' + i).style.top = "10%"
+        }
+      }
+      console.log(word);
+    }
+
+
+    //main function
+    function uncover(letter, numero) {
+      console.log(word);
+      var full = 0;
+      document.getElementById(letter).removeAttribute("onclick");
+      var lette = word.search(letter)
+      if (attempt == 3 && once == 0 && lette == -1) {
+        once++;
+        alert("You only have one more chance")
+      }
+      if (attempt == 4  && lette == -1) {
+        last();
+        document.getElementById('target').src = "Animations/bury.gif";
+      }
+        if (lette == -1) {
+          attempt++;
+          document.getElementById('hearts').innerHTML = hearts - attempt
+          document.getElementById(numero).innerHTML = '<img src="Images/x.png" style="width : 100%; height : 100%;"/>'
+          document.getElementById(letter).style.opacity = "0.2";
+          animationsCounter++;
+          document.getElementById('animation').src = animations[animationsCounter]
+          setTimeout(function () {
+            animationsCounter++;
+            document.getElementById('animation').src = animations[animationsCounter]
+          }, 700);
+          console.log(animationsCounter);
+
+        }
+        else {
+          document.getElementById(letter).style.opacity = "0.2";
+          var i = 0;
+          while (i <= word.length-1) {
+            var lett = word.charAt(i)
+            if (lett == letter) {
+              document.getElementById('overlay' + i).innerHTML = (letter).toUpperCase()
+            }
+            i++;
+          }
+
+          var id = setInterval(unfold, 100);
+          var a = 0;
+          function unfold() {
+            var text = document.getElementById('overlay' + a).textContent
+            document.getElementById('block' + a).style.marginBottom = "8px"
+            console.log(text);
+            console.log(a);
+            if (a == word.length-1) {
+              clearInterval(id)
+            }
+            if (text == (letter).toUpperCase()) {
+              document.getElementById('block' + a).style.borderBottom = "0px"
+              document.getElementById('overlay' + a).style.opacity = "1"
+              document.getElementById('overlay' + a).style.top = "10%"
+            }
+            a++;
+            document.getElementById('block' + a).style.marginBottom = "0px";
+          }
+          for (var i = 0; i < word.length; i++) {
+            var str = document.getElementById('overlay' + i).textContent
+            if (str == "") {
+              full++;
+            }
+          }
+          if (full == 0) {
+            setTimeout(function () {
+              last();
+            }, 1000);
+          }
+        }
+      }
+
+    //function uncover on keyboard click
+    document.addEventListener('keydown', click);
+    function click(x) {
+        var letter = x.keyCode
+        if (letter == 65) {
+          check1("a", 1)
+        }
+        if (letter == 66) {
+          check1("b", 2)
+        }
+        if (letter == 67) {
+          check1("c", 3)
+        }
+        if (letter == 68) {
+          check1("d", 4)
+        }
+        if (letter == 69) {
+          check1("e", 5)
+        }
+        if (letter == 70) {
+          check1("f", 6)
+        }
+        if (letter == 71) {
+          check1("g", 7)
+        }
+        if (letter == 72) {
+          check1("h", 8)
+        }
+        if (letter == 73) {
+          check1("i", 9)
+        }
+        if (letter == 74) {
+          check1("j", 10)
+        }
+        if (letter == 75) {
+          check1("k", 11)
+        }
+        if (letter == 76) {
+          check1("l", 12)
+        }
+        if (letter == 77) {
+          check1("m", 13)
+        }
+        if (letter == 78) {
+          check1("n", 14)
+        }
+        if (letter == 79) {
+          check1("o", 15)
+        }
+        if (letter == 80) {
+          check1("p", 16)
+        }
+        if (letter == 81) {
+          check1("q", 17)
+        }
+        if (letter == 82) {
+          check1("r", 18)
+        }
+        if (letter == 83) {
+          check1("s", 19)
+        }
+        if (letter == 84) {
+          check1("t", 20)
+        }
+        if (letter == 85) {
+          check1("u", 21)
+        }
+        if (letter == 86) {
+          check1("v", 22)
+        }
+        if (letter == 87) {
+          check1("w", 23)
+        }
+        if (letter == 88) {
+          check1("x", 24)
+        }
+        if (letter == 89) {
+          check1("y", 25)
+        }
+        if (letter == 90) {
+          check1("z", 26)
+        }
+      }
+
+    //check make sure the keyboard can only be clicked once
+    function check1(letter, number) {
+      var check1 = document.getElementById('main').style.opacity
+      console.log(check1);
+      if (check1 != 1) {
+
+      }
+      else {
+        var check = document.getElementById(letter).style.opacity
+        if (check == 0.2) {
+        }
+        else {
+          uncover(letter, number)
+        }
+      }
+    }
+
+    //information buton
+    function fun() {
+      document.getElementById('txt').style.display = "block"
+      document.getElementById('but').style.display = "block"
+      document.getElementById('back').style.display = "block"
+      setTimeout(function () {
+        document.getElementById('back').style.opacity = "0.8"
+        document.getElementById("txt").style.top = "50%"
+        document.getElementById('but').style.top = "82%"
+        document.getElementById('txt').style.opacity = "1"
+        document.getElementById('but').style.opacity = "1"
+      }, 100);
+    }
+    function go() {
+      document.getElementById('back').style.opacity = "0"
+      document.getElementById("txt").style.top = "40%"
+      document.getElementById('but').style.top = "85%"
+      document.getElementById('txt').style.opacity = "0"
+      document.getElementById('but').style.opacity = "0"
+      setTimeout(function () {
+        document.getElementById('txt').style.display = "none"
+        document.getElementById('but').style.display = "none"
+        document.getElementById('back').style.display = "none"
+      }, 600);
+    }
+
+    //ending transition
+    function last() {
+      document.getElementById('back').style.display = "block"
+      document.getElementById('main').style.opacity = "0";
+      setTimeout(function () {
+        document.getElementById('back').style.opacity = "1";
+      }, 100);
+      setTimeout(function () {
+        document.getElementById('back').style.display = "none"
+        document.getElementById('main').style.display = "none"
+        document.getElementById('circle').style.display = "flex"
+      }, 600);
+      setTimeout(function () {
+        document.getElementById('circle').style.opacity = "1";
+      }, 700);
+      setTimeout(function () {
+        document.getElementById('loader').style.opacity = "0";
+      }, 3000);
+      setTimeout(function () {
+        document.getElementById('loader').style.display = "none";
+        document.getElementById('inputT').style.display = "block"
+      }, 3500);
+      setTimeout(function () {
+        document.getElementById('inputT').style.opacity = "1";
+      }, 3600);
+    }
+
+    //activate funciton on enter click
+    var input1 = document.getElementById("input");
+    input.addEventListener("keyup", function(event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        check();
+        document.getElementById('inputT').style.opacity = "0";
+      }
+    });
+
+    //all of the ending animations
+    function check() {
+      document.getElementById('circle').style.display = "none";
+      var answer = document.getElementById('input').value
+      document.getElementById('text3').innerHTML = word.toUpperCase();
+      document.getElementById('text2').innerHTML = answer.toUpperCase();
+      document.getElementById('uno').style.display = "block";
+      document.getElementById('dos').style.display = "block";
+      setTimeout(function () {
+        var i = 0;
+        var repeat = setInterval(myTimer, 100);
+        var input = "Your guess was"
+        function myTimer() {
+          i++;
+          var sub = input.substring(0,i);
+          document.getElementById('text1').innerHTML = sub
+          if (i == input.length) {
+            clearInterval(repeat);
+          }
+        }
+      }, 10);
+      setTimeout(function () {
+        document.getElementById('tres').classList.add("animate1");
+      }, 1500);
+      setTimeout(function () {
+        document.getElementById('text2').style.opacity = "1";
+      }, 2500);
+      setTimeout(function () {
+        document.getElementById('quatro').classList.add("animate2");
+      }, 3500);
+      setTimeout(function () {
+        document.getElementById('text3').classList.add("animate3");
+      }, 4500);
+      setTimeout(function () {
+        hi();
+      }, 5000);
+    }
+
+    //appearing div
+    function hi() {
+      var answer = String(document.getElementById('input').value).toLowerCase()
+      if (answer == word) {
+        document.getElementById('choice').innerHTML = "CORRECT"
+        document.getElementById('gif').style.display = "block"
+      }
+      else {
+        document.getElementById('choice').innerHTML = "WRONG"
+      }
+      document.getElementById('yi').innerHTML = word
+      document.getElementById('er').innerHTML = answer
+      document.getElementById('ending').style.transform = "scale(1.5,1.5)"
+      setTimeout(function () {
+        document.getElementById('ending').style.transition = "0.2s"
+       document.getElementById('ending').style.transform = "scale(1.4,1.4)"
+     }, 1500);
+    }
+
+    //replaying the whole game
+    function replay() {
+      document.getElementById('link').click()
+    }
+    </script>
+
+  </body>
+</html>
